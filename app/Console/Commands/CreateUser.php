@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUser extends Command
 {
@@ -25,6 +27,13 @@ class CreateUser extends Command
      */
     public function handle()
     {
-        //
+        $name=$this->ask('name');
+        $email=$this->ask('email');
+        $password=$this->ask('password');
+        User::create([
+            'name'=>$name,
+            'email'=>$email,
+            'password'=>Hash::make($password),
+        ]);
     }
 }

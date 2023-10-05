@@ -13,7 +13,7 @@ class CreateProblemRelSolutionTable extends Migration
      */
     public function up()
     {
-        Schema::create('ProblemRelSolution', function (Blueprint $table) {
+        Schema::create('problem_rel_solution', function (Blueprint $table) {
             $table->id(); // Auto-incremental primary key
             $table->unsignedBigInteger('problem_id'); // Unsigned big integer column for problem_id
             $table->unsignedBigInteger('solution_id'); // Unsigned big integer column for solution_id

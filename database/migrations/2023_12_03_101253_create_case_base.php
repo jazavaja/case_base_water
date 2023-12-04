@@ -22,9 +22,12 @@ return new class extends Migration
 //            Solutions
             $table->decimal('irrigation_duration', 8, 2); // in minutes or hours
             $table->decimal('flow_rate', 8, 2); // in liters per minute or gallons per hour
-            $table->string('nozzle_type'); // e.g., specific nozzle type or size
+            $table->unsignedBigInteger('nozzle_id'); // Foreign key reference to the nozzle table
             $table->decimal('water_application_rate', 8, 2); // in mm/hour or inches/hour
             $table->timestamps();
+
+            $table->foreign('nozzle_id')->references('id')->on('nozzle')->onDelete('cascade');
+
         });
 
     }

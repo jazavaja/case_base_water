@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class SolveCBR extends Command
 {
@@ -29,13 +30,13 @@ class SolveCBR extends Command
 
         // Display the adapted solution
         $this->info('Adapted Solution:');
-        $this->table(['Parameter', 'Value'], collect($adaptedSolution)->toArray());
+        $this->table(['Parameter', 'Value'], $adaptedSolution);
     }
 
     private function retrieveSimilarCases($newProblem)
     {
         // Set a similarity threshold, adjust as needed
-        $similarityThreshold = 2.0;
+        $similarityThreshold = 30;
 
         // Query the case_base table to retrieve similar cases
         $allCases = DB::table('case_base')->get();
@@ -72,10 +73,10 @@ class SolveCBR extends Command
             // Handle the case where no similar cases were found
             // You can return a default solution or use a fallback strategy
             return [
-                'irrigation_duration' => 0,
-                'flow_rate' => 0,
-                'nozzle_type' => 'DefaultNozzle',
-                'water_application_rate' => 0,
+                ['irrigation_duration', 0],
+                ['flow_rate', 0],
+                ['nozzle_id', 'DefaultNozzle'],
+                ['water_application_rate', 0],
             ];
         }
 
@@ -89,7 +90,7 @@ class SolveCBR extends Command
         foreach ($similarCases as $case) {
             $totalIrrigationDuration += $case['irrigation_duration'];
             $totalFlowRate += $case['flow_rate'];
-            $nozzleTypes[] = $case['nozzle_type'];
+            $nozzleTypes[] = $case['nozzle_id'];
             $totalWaterApplicationRate += $case['water_application_rate'];
         }
 
@@ -112,10 +113,11 @@ class SolveCBR extends Command
 
         // Return the adapted solutions
         return [
-            'irrigation_duration' => $averageIrrigationDuration,
-            'flow_rate' => $averageFlowRate,
-            'nozzle_type' => $mostCommonNozzle,
-            'water_application_rate' => $averageWaterApplicationRate,
+            ['irrigation_duration', $averageIrrigationDuration],
+            ['flow_rate', $averageFlowRate],
+            ['nozzle_type', $mostCommonNozzle],
+            ['water_application_rate', $averageWaterApplicationRate],
         ];
     }
 }
+

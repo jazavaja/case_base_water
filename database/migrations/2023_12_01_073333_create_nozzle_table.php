@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('nozzle', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->string('type')->unique();
             // Add any other columns for nozzle details
             $table->timestamps();
         });

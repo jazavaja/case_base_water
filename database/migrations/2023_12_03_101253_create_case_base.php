@@ -24,6 +24,8 @@ return new class extends Migration
             $table->decimal('flow_rate', 8, 2); // in liters per minute or gallons per hour        نرخ جریان آب
             $table->unsignedBigInteger('nozzle_id'); // Foreign key reference to the nozzle table              نوع نازل
             $table->decimal('water_application_rate', 8, 2); // in mm/hour or inches/hour          میزان مصرف آب اینچ بر ساعت
+
+
             $table->timestamps();
 
             $table->foreign('nozzle_id')->references('id')->on('nozzle')->onDelete('cascade');

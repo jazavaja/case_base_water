@@ -41,16 +41,16 @@ class CreateData extends Command
 
         $listNozzle = DB::table('nozzle')->pluck('id')->toArray(); // Get an array of nozzle IDs
 
-        for ($i = 1; $i <= 500; $i++) {
+        for ($i = 1; $i <= 2000; $i++) {
 
             $nozzleId = $listNozzle[array_rand($listNozzle)]; // Randomly select a nozzle ID from the list
 
             DB::table('case_base')->insert([
                 'solar_irradiance' => rand(1, 10),
-                'temperature' => rand(5, 30),
+                'temperature' => rand(15, 30),
                 'humidity' => rand(40, 80),
                 'soilPH' => rand(5, 8),
-                'crop_area' => rand(10, 2000),
+                'crop_area' => rand(1000, 2000),
                 'irrigation_duration' => rand(30, 120),
                 'flow_rate' => rand(5, 20),
                 'nozzle_id' => $nozzleId,

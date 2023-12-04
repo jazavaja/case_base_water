@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float('temperature');
             $table->float('humidity');
             $table->float('soilPH');
-            $table->float('crop_area');
+            $table->float('crop_area'); // square meters
 //            Solutions
             $table->decimal('irrigation_duration', 8, 2); // in minutes or hours
             $table->decimal('flow_rate', 8, 2); // in liters per minute or gallons per hour

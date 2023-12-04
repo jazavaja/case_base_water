@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CreateData extends Command
 {
@@ -38,8 +39,11 @@ class CreateData extends Command
 
         }
 
+        $listNozzle = DB::table('nozzle')->pluck('id')->toArray(); // Get an array of nozzle IDs
+
         for ($i = 1; $i <= 500; $i++) {
-            $nozzleId = rand(1, 5); // Assuming 5 records in the nozzle table
+
+            $nozzleId = $listNozzle[array_rand($listNozzle)]; // Randomly select a nozzle ID from the list
 
             DB::table('case_base')->insert([
                 'solar_irradiance' => rand(1, 10),

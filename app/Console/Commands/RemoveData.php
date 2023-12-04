@@ -12,7 +12,7 @@ class RemoveData extends Command
      *
      * @var string
      */
-    protected $signature = 'sbr:remove';
+    protected $signature = 'cbr:remove';
 
     /**
      * The console command description.

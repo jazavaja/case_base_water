@@ -12,7 +12,7 @@ class CreateData extends Command
      *
      * @var string
      */
-    protected $signature = 'sbr:data';
+    protected $signature = 'cbr:data';
 
     /**
      * The console command description.

@@ -28,5 +28,8 @@ class RemoveData extends Command
     {
         DB::table('nozzle')->delete();
         DB::table('case_base')->delete();
+        DB::statement('ALTER TABLE nozzle AUTO_INCREMENT = 1');
+        DB::statement('ALTER TABLE case_base AUTO_INCREMENT = 1');
+
     }
 }

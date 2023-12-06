@@ -40,13 +40,10 @@ class SolveCBR extends Command
                 return is_numeric($value) && $value >= 40 && $value <= 80;
             }),
 
-            'soilPH' => $this->askWithValidation('Enter soil pH (between 5 and 8):', function ($value) {
-                return is_numeric($value) && $value >= 5 && $value <= 8;
+            'soilPH' => $this->askWithValidation('Enter soil pH (between 0 and 14):', function ($value) {
+                return is_numeric($value) && $value >= 0 && $value <= 14;
             }),
 
-            'crop_area' => $this->askWithValidation('Enter crop area (positive numeric value 1000 to 2000):', function ($value) {
-                return is_numeric($value) && $value >= 1000 && $value <= 2000;
-            }),
         ];
 
         // Retrieve similar cases

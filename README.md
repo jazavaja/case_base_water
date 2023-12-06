@@ -68,3 +68,11 @@ The adaptation process in Case-Based Reasoning involves modifying or selecting a
 - The provided PHP code snippets for retrieving similar cases and adapting the solution serve as an example. You can customize the adaptation logic based on your specific requirements and domain knowledge.
 
 Remember that the effectiveness of Case-Based Reasoning depends on the quality of your case base and the appropriateness of your adaptation strategy for the given problem domain. Adjust and refine your approach based on the outcomes and feedback from the application in real-world scenarios.
+
+
+---------------------
+در سیستم‌های آبیاری، flow_rate یا میزان جریان، حجم آبی را که از سیستم عبور می‌کند، در واحد زمان اندازه‌گیری می‌شود. به عنوان مثال، اگر شما بدانید که flow_rate یک سیستم آبیاری 10 لیتر در دقیقه است، این به این معنی است که در هر دقیقه، 10 لیتر آب از سیستم عبور می‌کند.
+
+از سوی دیگر، water_application_rate یا نرخ اعمال آب، میزان آبی را که به یک منطقه خاص اعمال می‌شود، نشان می‌دهد. این معمولاً به عنوان ارقام میلی‌متر در هر ساعت یا اینچ در هر ساعت اعلام می‌شود. به عنوان مثال، اگر water_application_rate برابر با 20 میلی‌متر در ساعت باشد، این به این معنی است که در هر ساعت، 20 میلی‌متر آب به منطقه مورد نظر اعمال می‌شود.
+
+بنابراین، اگرچه این دو مقدار با هم مرتبط هستند، اما معمولاً برابر نیستند زیرا flow_rate حجم آب عبوری را اندازه می‌گیرد، در حالی که water_application_rate نرخ اعمال آب به یک منطقه خاص را نشان می‌دهد.

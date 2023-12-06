@@ -129,9 +129,7 @@ class SolveCBR extends Command
         $mostCommonNozzle = array_reduce(
             $nozzleTypes,
             function ($mostCommon, $currentNozzle) use ($nozzleTypes) {
-                return ($mostCommon['count'] > ($currentNozzleCount = count(array_keys($nozzleTypes, $currentNozzle))))
-                    ? $mostCommon
-                    : ['type' => $currentNozzle, 'count' => $currentNozzleCount];
+                return ($mostCommon['count'] > ($currentNozzleCount = count(array_keys($nozzleTypes, $currentNozzle)))) ? $mostCommon : ['type' => $currentNozzle, 'count' => $currentNozzleCount];
             },
             ['type' => null, 'count' => 0]
         )['type'];
@@ -140,10 +138,10 @@ class SolveCBR extends Command
 
         // Return the adapted solutions
         return [
-            ['irrigation_duration', $averageIrrigationDuration],
-            ['flow_rate', $averageFlowRate],
+            ['irrigation_duration (minutes)', $averageIrrigationDuration],
+            ['flow_rate (liters per minute)', $averageFlowRate],
             ['nozzle_type', $mostCommonNozzle],
-            ['water_application_rate', $averageWaterApplicationRate],
+            ['water_application_rate (mm/hour)', $averageWaterApplicationRate],
         ];
     }
 }

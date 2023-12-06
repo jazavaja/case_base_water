@@ -11,15 +11,42 @@ class SolveCBR extends Command
     protected $signature = 'cbr:solve';
     protected $description = 'Solve a problem using Case-Based Reasoning';
 
+
+// Custom function to ask with validation
+    private function askWithValidation($question, $validation)
+    {
+        $value = $this->ask($question);
+
+        // Continue asking until the input passes validation
+        while (!$validation($value)) {
+            $this->error('Invalid input. Please try again.');
+            $value = $this->ask($question);
+        }
+
+        return $value;
+    }
     public function handle()
     {
-        // Input the problem parameters
         $newProblem = [
-            'solar_irradiance' => $this->ask('Enter solar irradiance:'),
-            'temperature' => $this->ask('Enter temperature:'),
-            'humidity' => $this->ask('Enter humidity:'),
-            'soilPH' => $this->ask('Enter soil pH:'),
-            'crop_area' => $this->ask('Enter crop area:'),
+            'solar_irradiance' => $this->askWithValidation('Enter solar irradiance (between 1 and 10):', function ($value) {
+                return is_numeric($value) && $value >= 1 && $value <= 10;
+            }),
+
+            'temperature' => $this->askWithValidation('Enter temperature (between 5 and 30):', function ($value) {
+                return is_numeric($value) && $value >= 5 && $value <= 30;
+            }),
+
+            'humidity' => $this->askWithValidation('Enter humidity (between 40 and 80):', function ($value) {
+                return is_numeric($value) && $value >= 40 && $value <= 80;
+            }),
+
+            'soilPH' => $this->askWithValidation('Enter soil pH (between 5 and 8):', function ($value) {
+                return is_numeric($value) && $value >= 5 && $value <= 8;
+            }),
+
+            'crop_area' => $this->askWithValidation('Enter crop area (positive numeric value 1000 to 2000):', function ($value) {
+                return is_numeric($value) && $value >= 1000 && $value <= 2000;
+            }),
         ];
 
         // Retrieve similar cases

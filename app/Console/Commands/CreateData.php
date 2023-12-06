@@ -47,7 +47,7 @@ class CreateData extends Command
 
             DB::table('case_base')->insert([
                 'solar_irradiance' => rand(1, 10),
-                'temperature' => rand(15, 30),
+                'temperature' => rand(5, 30),
                 'humidity' => rand(40, 80),
                 'soilPH' => rand(5, 8),
                 'crop_area' => rand(1000, 2000),
